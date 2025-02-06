@@ -3,20 +3,20 @@ let cachedData = null; // 用于缓存数据，减少重复请求，提高加载
 
 document.addEventListener("DOMContentLoaded", () => {
     // **获取 logo 和 sidebar**
-    const logo = document.getElementById("logo");
-    const sidebar = document.getElementById("sidebar");
+    // const logo = document.getElementById("logo");
+    // const sidebar = document.getElementById("sidebar");
 
     // **点击 logo 切换 sidebar 显示/隐藏**
-    logo.addEventListener("click", () => {
-        sidebar.classList.toggle("show");
-    });
+    // logo.addEventListener("click", () => {
+    //     sidebar.classList.toggle("show");
+    // });
 
     // **点击 sidebar 外部区域时，隐藏 sidebar**
-    document.addEventListener("click", (event) => {
-        if (!sidebar.contains(event.target) && !logo.contains(event.target)) {
-            sidebar.classList.remove("show");
-        }
-    });
+    // document.addEventListener("click", (event) => {
+    //     if (!sidebar.contains(event.target) && !logo.contains(event.target)) {
+    //         sidebar.classList.remove("show");
+    //     }
+    // });
 
     // **获取菜单项和内容区域**
     const menuItems = document.querySelectorAll(".header-menu li");
