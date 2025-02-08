@@ -25,13 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // **点击菜单项，切换不同内容**
     menuItems.forEach((item, index) => {
         item.addEventListener("click", () => {
-            menuItems.forEach(menu => menu.classList.remove("active")); // 先移除所有菜单项的高亮状态
-            contentSections.forEach(section => section.style.display = "none"); // 隐藏所有内容
-
-            item.classList.add("active"); // 设置当前点击的菜单项为活跃状态
-            contentSections[index].style.display = "block"; // 显示对应的内容
+            // 先隐藏所有内容
+            contentSections.forEach(section => {
+                section.style.opacity = "0"; 
+                section.style.visibility = "hidden"; 
+                section.style.display = "none";  // 重要！设置为 none
+            });
+    
+            // 移除所有菜单的 active 状态
+            menuItems.forEach(menu => menu.classList.remove("active"));
+    
+            // 激活当前菜单项
+            item.classList.add("active");
+    
+            // 显示选中的 section
+            setTimeout(() => {
+                contentSections[index].style.display = "grid";  // 让它重新显示
+                contentSections[index].style.opacity = "1";  
+                contentSections[index].style.visibility = "visible";  
+            }, 300); // 300ms 过渡动画
         });
     });
+    
+    
 
     fetchData(); // **初始化加载数据**
 
@@ -67,71 +83,53 @@ function renderData(data) {
     fillContent(document.getElementById("hangouts"), data.hangouts);
 }
 
-// **优化 fillContent，填充页面内容**
+function formatDate(isoString) {
+    return isoString.split("T")[0]; // 直接截取前半部分
+}
+
 function fillContent(container, items) {
     if (!items || items.error) {
         container.innerHTML = `<p>Error loading data: ${items ? items.error : "No data found"}</p>`;
         return;
     }
 
-    const fragment = document.createDocumentFragment(); // **使用 fragment 优化 DOM 操作，减少重绘**
-    container.innerHTML = ""; // **清空旧内容**
+    const fragment = document.createDocumentFragment(); // 使用 fragment 优化 DOM 操作
+    container.innerHTML = ""; // 清空旧内容
 
     items.forEach(item => {
-        // **创建外层卡片 div**
+        // **创建 case 容器**
         const caseDiv = document.createElement("div");
         caseDiv.classList.add("case");
+        caseDiv.onclick = () => openModal(item.image, formatDate(item.date), item.description, item.footage, item.title);
 
-        // **创建图片容器**
-        const pictureDiv = document.createElement("div");
-        pictureDiv.classList.add("case-picture");
+        // **创建图片**
         const img = document.createElement("img");
-        img.src = item.image; // 设置图片来源
-        img.alt = item.title; // 设置图片的 alt 文字
-        pictureDiv.appendChild(img); // 添加图片到容器
-
-        // **创建内容容器**
-        const containerDiv = document.createElement("div");
-        containerDiv.classList.add("case-container");
+        img.src = item.image;
+        img.alt = item.title;
+        img.classList.add("case-image"); // 添加 class 控制样式
 
         // **创建标题**
         const titleDiv = document.createElement("div");
         titleDiv.classList.add("case-title");
         titleDiv.innerHTML = `<p>${item.title}</p>`;
 
-        // **创建日期**
-        const dateDiv = document.createElement("div");
-        dateDiv.classList.add("case-date");
-        dateDiv.innerHTML = `<p>${item.date}</p>`;
-
-        // **创建描述信息**
-        const contentDiv = document.createElement("div");
-        contentDiv.classList.add("case-content");
-        contentDiv.innerHTML = `<p>${item.description}</p>`;
-
-        // **创建 Footage 按钮**
-        const footageDiv = document.createElement("div");
-        footageDiv.classList.add("case-footage");
-
-        // **如果存在视频链接，则创建按钮**
-        if (item.footage) {
-            const button = document.createElement("button");
-            button.textContent = "Footage";
-            button.onclick = () => window.open(item.footage, "_blank"); // 点击按钮后打开新页面
-            footageDiv.appendChild(button);
-        }
-
-        // **将所有元素组合**
-        containerDiv.appendChild(titleDiv);
-        containerDiv.appendChild(dateDiv);
-        containerDiv.appendChild(contentDiv);
-        containerDiv.appendChild(footageDiv);
-        caseDiv.appendChild(pictureDiv);
-        caseDiv.appendChild(containerDiv);
-
-        // **使用 fragment，避免多次 DOM 更新**
+        // **组合结构**
+        caseDiv.appendChild(img);
+        caseDiv.appendChild(titleDiv);
         fragment.appendChild(caseDiv);
     });
 
-    container.appendChild(fragment); // **一次性将所有元素添加到 DOM，提高性能**
+    container.appendChild(fragment); // 一次性插入，提高性能
+}
+function openModal(image, date, desc, link, title) {
+    document.getElementById("modal-img").src = image;
+    document.getElementById("modal-date").innerText = date;
+    document.getElementById("modal-desc").innerText = desc;
+    document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-link").href = link;
+    document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
 }

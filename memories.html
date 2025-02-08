@@ -30,15 +30,23 @@
         <div></div>
     </div>
     <!-- the content of three different memories -->
-     <!-- 内容卡片由js动态生成，通过google sheets添加或删除
-      其格式为：
-      case -> 
-      case-picture,case-container -> 
-      case-title,case-date,case-content,case-footage -->
+     <!-- 内容卡片由js动态生成，通过google sheets添加或删除 -->
     <div id="content">
-        <div class="content-selection" id="local-jam"></div>
-        <div class="content-selection" id="international-jam" style="display: none;"></div>
-        <div class="content-selection" id="hangouts" style="display: none;"></div>
+        <div class="content-selection gallery" id="local-jam"></div>
+        <div class="content-selection gallery" id="international-jam" style="display: none;"></div>
+        <div class="content-selection gallery" id="hangouts" style="display: none;"></div>
+    </div>
+
+    <!-- Modal 弹出框 (点击 case 时显示详情) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="">
+            <h2 id="modal-title"></h2>
+            <p id="modal-date"></p>
+            <p id="modal-desc"></p>
+            <a id="modal-link" href="#" target="_blank" class="modal-button">Watch Footage</a>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
