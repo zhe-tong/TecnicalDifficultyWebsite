@@ -27,7 +27,7 @@ body {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 7%;
     left: 0;
     width: 7%;
     height: 100vh;
@@ -36,7 +36,7 @@ body {
     align-items: center;;
     font-family: "Kumar one", serif;
     color: white;
-    padding: 100px 20px;
+    padding: 6vh 20px;
     overflow: hidden;
 }
 
@@ -57,6 +57,7 @@ body {
     display: block; 
     padding: 10px;
 }
+
 
 .memory-header {
     position: sticky;
@@ -219,5 +220,125 @@ body {
     cursor: pointer;
 }
 
+.members-cards {
+    display: grid;
+    grid-template-columns: 1fr 2fr 5fr; /* 左侧名字 : 图片 : 文本 = 1:2:5 */
+    background-color: black;
+    color: white;
+    padding: 50px;
+    width: 90%;
+    max-width: 1200px; /* 控制整体宽度 */
+    margin: 50px auto;
+    border-radius: 10px;
+    align-items: center; /* 让子元素垂直居中 */
+}
 
-  
+/* 左侧名字 */
+.member-name {
+    order: 1;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+    padding-left: 20px;
+}
+
+/* 图片 */
+.members-cards img {
+    order: 2;
+    width: 100%; /* 让图片填满当前列 */
+    height: 300px; /* 固定高度 */
+    object-fit: cover; /* 确保图片不会变形 */
+    border-radius: 5px;
+}
+
+/* 右侧文本部分 */
+.member-box {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 40px;
+}
+
+.members-cards:nth-child(even) {
+    grid-template-columns: 5fr 2fr 1fr;
+}
+
+.members-cards:nth-child(even) .member-name {
+    order: 3; /* 让名字移动到最后 */
+}
+
+.members-cards:nth-child(even) .members-cards img {
+    order: 2; /* 图片保持在中间 */
+}
+
+.members-cards:nth-child(even) .member-box {
+    order: 1; /* 让文本移动到最前 */
+}
+
+/* 标题 */
+.member-box-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 介绍 */
+.member-box-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* Instagram 按钮 */
+.member-box-instagram {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.member-box-instagram:hover {
+    background-color: purple;
+}
+
+
+@media screen and (max-width: 768px) {
+    /* 让 sidebar 隐藏 或 变窄 */
+    .sidebar {
+        width: 15%;  /* 变窄 */
+        padding: 50px 10px;
+    }
+
+    /* 调整 content，确保不被 sidebar 挤压 */
+    #content {
+        width: 85%;
+        margin-left: 15%; 
+        padding: 10px;
+    }
+
+    /* 调整网格布局：变成 1 列 */
+    .gallery {
+        grid-template-columns: 1fr; /* 1 列 */
+        gap: 10px; /* 减小间距 */
+        padding: 10px;
+    }
+
+    /* 让 case 图片宽度变小，避免超出屏幕 */
+    .case img {
+        height: auto; /* 让图片自适应 */
+        max-width: 100%;
+    }
+
+    /* 调整弹窗大小，适配移动端 */
+    .modal {
+        width: 90%; /* 让弹窗更适配小屏 */
+        max-width: none;
+    }
+}
