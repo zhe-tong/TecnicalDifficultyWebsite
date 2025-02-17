@@ -29,6 +29,22 @@ body {
   z-index: -1; /* 让它保持在最底层 */
 }
 
+.slogan {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  transform: translateX(-50%);
+  font-family: "Kumar One", serif; /* 选一个符合整体风格的字体 */
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85); /* 让颜色稍微柔和一点 */
+  text-transform: uppercase; /* 让文字大写，增加街头感 */
+  text-align: center; /* 居中对齐 */
+  letter-spacing: 2px; /* 增加字距，更具设计感 */
+  padding: 10px 20px;
+  border-radius: 5px; /* 让背景边角圆滑 */
+  z-index: 10;
+}
+
 .sidebar {
   position: fixed;
   top: 7%;
@@ -363,6 +379,13 @@ body {
   .sidebar {
     width: 20%; /* 变窄 */
     padding: 50px 10px;
+  }
+  .slogan {
+    font-size: 1rem; /* 在移动端字体稍微小一点 */
+    width: 90%;
+    left: 50%;
+    bottom: 10%;
+    padding: 8px 15px;
   }
   /* 调整 content，确保不被 sidebar 挤压 */
   #content {
