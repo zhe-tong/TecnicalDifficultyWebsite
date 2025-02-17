@@ -13,12 +13,14 @@ body {
 .background {
     position: fixed;
     top: 3%;
-    left: 0;
-    width: 100%;
+    left: 2.5%;
+    width: 95%;
     height: 95vh;
     background-image: url('./public/BG.webp');
     background-size: 95%;
+    background-size: cover;
     background-position: center;
+    object-fit: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     filter: grayscale(100%) contrast(120%);
@@ -57,7 +59,6 @@ body {
     display: block; 
     padding: 10px;
 }
-
 
 .memory-header {
     position: sticky;
@@ -205,7 +206,7 @@ body {
 }
 .modal-button {
     display: inline-block;
-    background: red;
+    background: purple;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -220,17 +221,24 @@ body {
     cursor: pointer;
 }
 
+.members-page {
+    padding-top: 5%;
+}
+
 .members-cards {
     display: grid;
     grid-template-columns: 1fr 2fr 5fr; /* 左侧名字 : 图片 : 文本 = 1:2:5 */
-    background-color: black;
+    background-color: #111;
     color: white;
-    padding: 50px;
+    padding: 20px;
     width: 90%;
     max-width: 1200px; /* 控制整体宽度 */
     margin: 50px auto;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     align-items: center; /* 让子元素垂直居中 */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
 /* 左侧名字 */
@@ -250,6 +258,12 @@ body {
     height: 300px; /* 固定高度 */
     object-fit: cover; /* 确保图片不会变形 */
     border-radius: 5px;
+    filter: grayscale(40%);
+    transition: filter 0.5s ease-in-out;
+}
+
+.members-cards img:hover {
+    filter: grayscale(10%);
 }
 
 /* 右侧文本部分 */
@@ -279,9 +293,10 @@ body {
 
 /* 标题 */
 .member-box-title {
-    font-size: 32px;
+    color: #eee;
     font-weight: bold;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* 介绍 */
@@ -293,26 +308,51 @@ body {
 
 /* Instagram 按钮 */
 .member-box-instagram {
-    background-color: transparent;
+    background: transparent;
+    border: 1px solid white;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+    padding: 5px 15px;
+    font-family: monospace;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .member-box-instagram:hover {
-    background-color: purple;
+    background: white;
+    color: black;
 }
 
+.instagram-button {
+    position: absolute;
+    top: 76%;
+    left: 41.7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; 
+    height: 60px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.instagram-button img {
+    width: 60%;
+    height: auto;
+}
+
+.instagram-button:hover {
+    transform: scale(1.1); /* 悬停时放大 */
+}
 
 @media screen and (max-width: 768px) {
+    .background {
+        background-position: 40.5% center;
+    }
     /* 让 sidebar 隐藏 或 变窄 */
     .sidebar {
-        width: 15%;  /* 变窄 */
+        width: 20%;  /* 变窄 */
         padding: 50px 10px;
     }
 
@@ -340,5 +380,44 @@ body {
     .modal {
         width: 90%; /* 让弹窗更适配小屏 */
         max-width: none;
+    }
+
+    .members-cards {
+        display: flex;
+        flex-direction: column;  /* 让头像、名字、介绍变成竖排 */
+        align-items: center;
+        padding: 15px;
+        width: 90%;  /* 让卡片整体更居中 */
+    }
+
+    .member-box {
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .member-name {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+    }
+
+    .members-cards:nth-child(even) .member-name {
+        order: 1; /* 让名字移动到最后 */
+    }
+    
+    .members-cards:nth-child(even) .members-cards img {
+        order: 2; /* 图片保持在中间 */
+    }
+    
+    .members-cards:nth-child(even) .member-box {
+        order: 3; /* 让文本移动到最前 */
+    }
+
+    .instagram-button {
+        top: 69.5%;
+        left: 41.9%;
     }
 }
