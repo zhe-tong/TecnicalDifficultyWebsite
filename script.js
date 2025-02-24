@@ -1,4 +1,5 @@
-const SHEET_URL = process.env.SHEET_URL || "fallback-url-if-needed";let cachedData = null;
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbz900gORrYot6Fuw-qzh6DO3Zfdtc27uvPmsu_j6w_DLG2DK9UuyPLeM5CPd7u4LzI/exec";
+let cachedData = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     const menuItems = document.querySelectorAll(".header-menu li");
@@ -25,17 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function fetchData() {
     if (cachedData) {
-        renderData(cachedData);
+        renderData(cachedData); 
         return;
     }
     fetch(SHEET_URL)
-        .then(response => response.json())
+        .then(response => response.json()) 
         .then(data => {
-            cachedData = data;
+            cachedData = data; 
             renderData(data);
         })
-        .catch(error => console.error("Error fetching data:", error));
+        .catch(error => console.error("Error fetching data:", error)); 
 }
+
+
+
 
 function renderData(data) {
     Object.keys(data).forEach(key => {
