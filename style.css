@@ -26,7 +26,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   filter: grayscale(100%) contrast(120%);
-  z-index: -1; /* 让它保持在最底层 */
+  z-index: -1; 
 }
 
 .slogan {
@@ -34,14 +34,14 @@ body {
   top: 30%;
   right: 10%;
   transform: translateX(-50%);
-  font-family: "Kumar One", serif; /* 选一个符合整体风格的字体 */
+  font-family: "Kumar One", serif; 
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85); /* 让颜色稍微柔和一点 */
-  text-transform: uppercase; /* 让文字大写，增加街头感 */
-  text-align: center; /* 居中对齐 */
-  letter-spacing: 2px; /* 增加字距，更具设计感 */
+  color: rgba(255, 255, 255, 0.85); 
+  text-transform: uppercase; 
+  text-align: center;
+  letter-spacing: 2px;
   padding: 10px 20px;
-  border-radius: 5px; /* 让背景边角圆滑 */
+  border-radius: 5px;
   z-index: 10;
 }
 
@@ -124,7 +124,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px; /* 统一间距 */
+  gap: 20px;
   list-style: none;
   cursor: pointer;
   padding: 0;
@@ -135,8 +135,8 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #eee;
-  min-width: 120px; /* 确保每个 menu 选项宽度一致 */
-  text-align: center; /* 文字居中 */
+  min-width: 120px;
+  text-align: center;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
@@ -186,8 +186,8 @@ body {
 .case {
   display: flex;
   flex-direction: column;
-  width: 100%; /* 让 case 占满网格 */
-  min-height: 250px; /* 保持高度一致 */
+  width: 100%;
+  min-height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,7 +208,7 @@ body {
 }
 
 .modal {
-  display: none; /* 默认隐藏 */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -253,21 +253,20 @@ body {
 
 .members-cards {
   display: grid;
-  grid-template-columns: 1fr 2fr 5fr; /* 左侧名字 : 图片 : 文本 = 1:2:5 */
+  grid-template-columns: 1fr 2fr 5fr;
   background-color: #111;
   color: white;
   padding: 20px;
   width: 90%;
-  max-width: 1200px; /* 控制整体宽度 */
+  max-width: 1200px;
   margin: 50px auto;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  align-items: center; /* 让子元素垂直居中 */
+  align-items: center;
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
-/* 左侧名字 */
 .member-name {
   order: 1;
   font-size: 20px;
@@ -277,13 +276,12 @@ body {
   padding-left: 20px;
 }
 
-/* 图片 */
 .members-cards img {
   order: 2;
-  width: 100%; /* 让图片填满当前列 */
-  height: 300px; /* 固定高度 */
+  width: 100%;
+  height: 300px;
   -o-object-fit: cover;
-     object-fit: cover; /* 确保图片不会变形 */
+     object-fit: cover;
   border-radius: 5px;
   filter: grayscale(40%);
   transition: filter 0.5s ease-in-out;
@@ -293,7 +291,6 @@ body {
   filter: grayscale(10%);
 }
 
-/* 右侧文本部分 */
 .member-box {
   order: 3;
   display: flex;
@@ -307,18 +304,17 @@ body {
 }
 
 .members-cards:nth-child(even) .member-name {
-  order: 3; /* 让名字移动到最后 */
+  order: 3; 
 }
 
 .members-cards:nth-child(even) .members-cards img {
-  order: 2; /* 图片保持在中间 */
+  order: 2; 
 }
 
 .members-cards:nth-child(even) .member-box {
-  order: 1; /* 让文本移动到最前 */
+  order: 1; 
 }
 
-/* 标题 */
 .member-box-title {
   color: #eee;
   font-weight: bold;
@@ -326,14 +322,12 @@ body {
   letter-spacing: 1px;
 }
 
-/* 介绍 */
 .member-box-desc {
   font-size: 18px;
   line-height: 1.6;
   opacity: 0.8;
 }
 
-/* Instagram 按钮 */
 .member-box-instagram {
   background: transparent;
   border: 1px solid white;
@@ -368,53 +362,53 @@ body {
 }
 
 .instagram-button:hover {
-  transform: scale(1.1); /* 悬停时放大 */
+  transform: scale(1.1); 
 }
 
 @media screen and (max-width: 768px) {
   .background {
     background-position: 40.5% center;
   }
-  /* 让 sidebar 隐藏 或 变窄 */
+
   .sidebar {
-    width: 20%; /* 变窄 */
+    width: 20%;
     padding: 50px 10px;
   }
   .slogan {
-    font-size: 1rem; /* 在移动端字体稍微小一点 */
+    font-size: 1rem;
     width: 90%;
     left: 50%;
     bottom: 10%;
     padding: 8px 15px;
   }
-  /* 调整 content，确保不被 sidebar 挤压 */
+
   #content {
     width: 85%;
     margin-left: 15%;
     padding: 10px;
   }
-  /* 调整网格布局：变成 1 列 */
+
   .gallery {
-    grid-template-columns: 1fr; /* 1 列 */
-    gap: 10px; /* 减小间距 */
+    grid-template-columns: 1fr;
+    gap: 10px;
     padding: 10px;
   }
-  /* 让 case 图片宽度变小，避免超出屏幕 */
+
   .case img {
-    height: auto; /* 让图片自适应 */
+    height: auto;
     max-width: 100%;
   }
-  /* 调整弹窗大小，适配移动端 */
+
   .modal {
-    width: 90%; /* 让弹窗更适配小屏 */
+    width: 90%;
     max-width: none;
   }
   .members-cards {
     display: flex;
-    flex-direction: column; /* 让头像、名字、介绍变成竖排 */
+    flex-direction: column;
     align-items: center;
     padding: 15px;
-    width: 90%; /* 让卡片整体更居中 */
+    width: 90%;
   }
   .member-box {
     text-align: center;
@@ -429,16 +423,16 @@ body {
     margin-top: 10px;
   }
   .members-cards:nth-child(even) .member-name {
-    order: 1; /* 让名字移动到最后 */
+    order: 1; 
   }
   .members-cards:nth-child(even) .members-cards img {
-    order: 2; /* 图片保持在中间 */
+    order: 2; 
   }
   .members-cards:nth-child(even) .member-box {
-    order: 3; /* 让文本移动到最前 */
+    order: 3; 
   }
   .instagram-button {
     top: 69.5%;
     left: 41.9%;
   }
-}/*# sourceMappingURL=style.css.map */
+}

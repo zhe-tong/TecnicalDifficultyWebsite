@@ -7,21 +7,16 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- the sidebar -->
     <div class="sidebar" id="sidebar">
         <ul>
             <li><a href="memories.html">Memories</a></li>
             <li><a href="members.html">Members</a></li>
         </ul>
     </div>
-    <!-- the header -->
     <div class="memory-header">
-        <!-- logo here gonna has a link to call out a side bar menu -->
         <div class="logo-container" id="logo">
-            <!-- <img src="./public/logo.png" alt="logo" class="logo"> -->
              <a href="index.html" class="logo">Technical Difficulty</a>
         </div>
-        <!-- menu for local jam / international jam / hangouts -->
         <ul class="header-menu">
             <li>Local Jam</li>
             <li>International Jam</li>
@@ -29,15 +24,11 @@
         </ul>
         <div></div>
     </div>
-    <!-- the content of three different memories -->
-     <!-- 内容卡片由js动态生成，通过google sheets添加或删除 -->
     <div id="content">
         <div class="content-selection gallery" id="local-jam"></div>
         <div class="content-selection gallery" id="international-jam" style="display: none;"></div>
         <div class="content-selection gallery" id="hangouts" style="display: none;"></div>
     </div>
-
-    <!-- Modal 弹出框 (点击 case 时显示详情) -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
