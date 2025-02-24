@@ -4,7 +4,7 @@
 
 ## ** Live Website**
 
-[ Visit Technical Difficulty Online](#) _(https://technicaldifficulty2022.com/)_  
+Visit Technical Difficulty Online
 [![Visit Technical Difficulty Online](./public/interface.png)](https://technicaldifficulty2022.com/)
 
 ## **Introduction**
@@ -42,6 +42,6 @@ This website serves as the official digital presence for **Technical Difficulty*
 
 - **Concept & Execution:** Technical Difficulty Crew
 - **Design & Development:** Zhe
-- **Instagram:** [@technicaldifficulty2022](https://www.instagram.com/technicaldifficulty2022)
+- **Instagram:** [@technicaldifficulty2022](https://www.instagram.com/technical_difficulty2022/)
 
 This site is an evolving archive. Stay tuned for future updates and more immersive storytelling.
